@@ -1,0 +1,26 @@
+app:
+  name: react-environment-demo
+  version: v1.0.0
+
+namespace:
+  name: origin-stage
+  labels:
+    ns: origin-stage
+
+replicaCount: 2
+
+image:
+  repository: rizkypanz/react-environment-demo
+  tag: "v1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 3000
+
+configmap:
+  name: react-environment-demo-origin-stage
+  data:
+    NODE_ENV: staging
+    REACT_APP_NODE_ENV: origin-stage
+    REACT_APP_VERSION: v1.0.0
